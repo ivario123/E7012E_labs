@@ -1,6 +1,6 @@
-#include <PinChangeInterrupt.h>
+//#include <PinChangeInterrupt.h>
 #define LEDPIN 13
-#define USE_PWM true
+//#define USE_PWM true
 #define USE_COUNTER
 int ontime = 200;
 
@@ -13,10 +13,10 @@ void setup() {
   //
   // Binding it to the same pin will stop us from triggering the event when ever
   // we use USE_PWM do tim the diode.
-  //attachInterrupt(
-  //  digitalPinToInterrupt(LEDPIN), led_isr,
-  //  CHANGE);
-  attachPinChangeInterrupt(digitalPinToPinChangeInterrupt(LEDPIN), led_isr, CHANGE);
+  attachInterrupt(
+   digitalPinToInterrupt(LEDPIN), led_isr,
+    CHANGE);
+  //attachPinChangeInterrupt(digitalPinToPinChangeInterrupt(LEDPIN), led_isr, CHANGE);
 
 // If we are using pwm set an initial value of duty cycle
 #ifdef USE_PWM
